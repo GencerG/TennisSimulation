@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TennisSimulation.Models
 {
-    class InputDataHolder
+    public class InputDataHolder
     {
         public List<Player> Players { get; set; }
         public List<Tournament> Tournaments { get; set; }
