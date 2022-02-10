@@ -46,18 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\src\Abstracts\Reward.cs" />
     <Compile Include="app\src\Core\Managers\GameManager.cs" />
+    <Compile Include="app\src\Core\Rewards\EliminationMatchReward.cs" />
+    <Compile Include="app\src\Core\Rewards\LeagueMatchReward.cs" />
     <Compile Include="app\src\Core\Rules\DominantHandRule.cs" />
     <Compile Include="app\src\Core\Rules\ExperienceRule.cs" />
     <Compile Include="app\src\Core\Rules\GroundTypeRule.cs" />
     <Compile Include="app\src\Core\Rules\ParticipationRule.cs" />
     <Compile Include="app\src\Core\Tournaments\EliminationTournament.cs" />
+    <Compile Include="app\src\Core\Tournaments\LeagueTournament.cs" />
     <Compile Include="app\src\Enums\Enums.cs" />
     <Compile Include="app\src\Abstracts\Rule.cs" />
     <Compile Include="app\src\Abstracts\Tournament.cs" />
     <Compile Include="app\src\Factory\TournamentFactory.cs" />
-    <Compile Include="app\src\Models\InputDataHolder.cs" />
+    <Compile Include="app\src\Models\InputData.cs" />
     <Compile Include="app\src\Models\PlayerModel.cs" />
+    <Compile Include="app\src\Models\PlayerResultModel.cs" />
     <Compile Include="app\src\Models\Skills.cs" />
     <Compile Include="app\src\Models\TournamentModel.cs" />
     <Compile Include="app\src\Program.cs" />
