@@ -1,7 +1,7 @@
 ﻿using TennisSimulation.Enums;
 using TennisSimulation.Models;
 
-namespace TennisSimulation.Interface
+namespace TennisSimulation.Abstracts
 {
     public abstract class Rule
     {

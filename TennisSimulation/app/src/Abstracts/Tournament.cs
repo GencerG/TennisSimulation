@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TennisSimulation.Abstracts;
 using TennisSimulation.Models;
 
-namespace TennisSimulation.Interface
+namespace TennisSimulation.Abstracts
 {
     public abstract class Tournament
     {
