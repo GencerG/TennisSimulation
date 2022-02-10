@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TennisSimulation.Models
 {
-    public class Tournament
+    public class TournamentModel
     {
         public int Id { get; set; }
         public string Surface { get; set; }
