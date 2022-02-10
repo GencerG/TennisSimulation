@@ -8,8 +8,8 @@ namespace TennisSimulation.Interface
         protected int PointToLose { get; set; }
         protected int PointToWin { get; set; }
 
-        private Rule () { }
-        public Rule (int pointToWin, int pointToLose)
+        private Rule() { }
+        public Rule(int pointToWin, int pointToLose)
         {
             PointToLose = pointToLose;
             PointToWin = pointToWin;
