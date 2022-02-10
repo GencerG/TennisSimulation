@@ -1,5 +1,4 @@
-﻿using TennisSimulation.Enums;
-using TennisSimulation.Interface;
+﻿using TennisSimulation.Abstracts;
 using TennisSimulation.Models;
 
 namespace TennisSimulation.Rules

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using TennisSimulation.Enums;
 using TennisSimulation.Utils;
 
 namespace TennisSimulation.Models

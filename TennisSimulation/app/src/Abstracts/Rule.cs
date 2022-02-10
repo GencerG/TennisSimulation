@@ -1,5 +1,4 @@
-﻿using TennisSimulation.Enums;
-using TennisSimulation.Models;
+﻿using TennisSimulation.Models;
 
 namespace TennisSimulation.Abstracts
 {

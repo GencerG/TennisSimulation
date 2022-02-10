@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TennisSimulation.Enums;
-using TennisSimulation.Interface;
+﻿using TennisSimulation.Abstracts;
 using TennisSimulation.Models;
 
 namespace TennisSimulation.Rules

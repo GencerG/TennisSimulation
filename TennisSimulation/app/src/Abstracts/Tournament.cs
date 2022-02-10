@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TennisSimulation.Abstracts;
 using TennisSimulation.Models;
 
 namespace TennisSimulation.Abstracts

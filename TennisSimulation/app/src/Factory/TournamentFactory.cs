@@ -1,6 +1,6 @@
-﻿using TennisSimulation.Core.Tournaments;
+﻿using TennisSimulation.Abstracts;
+using TennisSimulation.Core.Tournaments;
 using TennisSimulation.Enums;
-using TennisSimulation.Interface;
 using TennisSimulation.Models;
 using TennisSimulation.Rewards;
 using TennisSimulation.Rules;

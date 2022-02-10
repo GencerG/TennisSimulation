@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TennisSimulation.Interface;
+using TennisSimulation.Abstracts;
 using TennisSimulation.Models;
-using TennisSimulation.Utils;
 
 namespace TennisSimulation.Core.Tournaments
 {

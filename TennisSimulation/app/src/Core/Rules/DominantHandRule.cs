@@ -1,6 +1,6 @@
 ﻿using System;
+using TennisSimulation.Abstracts;
 using TennisSimulation.Enums;
-using TennisSimulation.Interface;
 using TennisSimulation.Models;
 
 namespace TennisSimulation.Rules

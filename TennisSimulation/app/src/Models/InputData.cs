@@ -14,7 +14,7 @@ namespace TennisSimulation.Models
         public InputData(string fileName)
         {
             Console.WriteLine("reading input data from file name: " + fileName);
-            var json = TennisSimulationUtils.GetJson<InputData>(fileName);
+            var json = TennisSimulationUtils.GetJsonFromFile<InputData>(fileName);
             PlayerModels = json.PlayerModels;
             TournamentModels = json.TournamentModels;
             
