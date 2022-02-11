@@ -7,6 +7,9 @@ using TennisSimulation.Rules;
 
 namespace TennisSimulation.Factory
 {
+    /// <summary>
+    /// Creates a tournament by given <see cref="TournamentType"/>
+    /// </summary>
     public static class TournamentFactory
     {
         public static Tournament GetTournament(TournamentType type, TournamentModel model)
@@ -19,7 +22,7 @@ namespace TennisSimulation.Factory
                         .ApplyRule(new DominantHandRule(2, 0))
                         .ApplyRule(new GroundTypeRule(4, 0))
                         .ApplyRule(new ParticipationRule(1, 0))
-                        .ApplyMatchReward(new EliminationMatchReward(20, 10));
+                        .ApplyMatchReward(new ExperienceReward(20, 10));
 
                 case TournamentType.League:
                     return new LeagueTournament(model)
@@ -27,7 +30,7 @@ namespace TennisSimulation.Factory
                         .ApplyRule(new DominantHandRule(2, 0))
                         .ApplyRule(new GroundTypeRule(4, 0))
                         .ApplyRule(new ParticipationRule(1, 0))
-                        .ApplyMatchReward(new LeagueMatchReward(10, 1));
+                        .ApplyMatchReward(new ExperienceReward(10, 1));
 
                 default:
                     return null;
