@@ -4,6 +4,7 @@ namespace TennisSimulation.Abstracts
 {
     public abstract class Reward
     {
+        public int Id { get; set; }
         protected int WinnerPrize { get; set; }
         protected int LoserPrize { get; set; }
 
