@@ -13,23 +13,21 @@ namespace TennisSimulation.Core.Tournaments
 
         public override void StartTournament(List<PlayerModel> participants)
         {
+            Console.WriteLine($"----------Starting new {TournamentModel.Type.ToUpperInvariant()} with {TournamentModel.Surface.ToUpperInvariant()} surface----------\n");
+
             var upperBracket = new List<PlayerModel>();
             var randomGenerator = new Random();
-
-            Console.WriteLine("Starting First Round");
-            Console.WriteLine(participants.Count);
+            var availablePlayersForNextTournament = new List<PlayerModel>();
 
             // Matching players randomly just for the first round
             while (participants.Count > 0)
             {
-                var player1 = participants[randomGenerator.Next(0, participants.Count)];
-                participants.Remove(player1);
+                var player1 = Utils.TennisSimulationUtils.GetRandomAndRemove<PlayerModel>(participants, randomGenerator);
+                var player2 = Utils.TennisSimulationUtils.GetRandomAndRemove<PlayerModel>(participants, randomGenerator);
 
-                var player2 = participants[randomGenerator.Next(0, participants.Count)];
-                participants.Remove(player2);
-
-                var winnerPlayer = PlayMatch(ref player1, ref player2, randomGenerator);
-                upperBracket.Add(winnerPlayer);
+                var players = PlayMatch(ref player1, ref player2, randomGenerator);
+                upperBracket.Add(players[0]);
+                availablePlayersForNextTournament.Add(players[1]);
             }
 
             // Matching players in order for the further rounds
@@ -42,11 +40,18 @@ namespace TennisSimulation.Core.Tournaments
                 {
                     var player1 = upperBracket[i];
                     var player2 = upperBracket[i+1];
-                    var winnerPlayer = PlayMatch(ref player1, ref player2, randomGenerator);
-                    upperBracket.Remove(winnerPlayer.Id == player1.Id ? player2 : player1);
+                    var players = PlayMatch(ref player1, ref player2, randomGenerator);
+                    upperBracket.Remove(players[1]);
+                    availablePlayersForNextTournament.Add(players[1]);
                 }
             }
 
+            availablePlayersForNextTournament.Add(upperBracket[0]);
+            for (int i = 0; i < availablePlayersForNextTournament.Count; ++i)
+            {
+                availablePlayersForNextTournament[i].PreparePlayerForNextTournament();
+                participants.Add(availablePlayersForNextTournament[i]);
+            }
             Console.WriteLine("Winner Id is: " + upperBracket[0].Id);
         }
     }
