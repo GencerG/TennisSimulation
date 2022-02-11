@@ -48,8 +48,7 @@
   <ItemGroup>
     <Compile Include="app\src\Abstracts\Reward.cs" />
     <Compile Include="app\src\Core\Managers\GameManager.cs" />
-    <Compile Include="app\src\Core\Rewards\EliminationMatchReward.cs" />
-    <Compile Include="app\src\Core\Rewards\LeagueMatchReward.cs" />
+    <Compile Include="app\src\Core\Rewards\ExperienceReward.cs" />
     <Compile Include="app\src\Core\Rules\DominantHandRule.cs" />
     <Compile Include="app\src\Core\Rules\ExperienceRule.cs" />
     <Compile Include="app\src\Core\Rules\GroundTypeRule.cs" />
