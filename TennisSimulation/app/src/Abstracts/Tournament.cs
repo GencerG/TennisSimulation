@@ -4,20 +4,33 @@ using TennisSimulation.Models;
 
 namespace TennisSimulation.Abstracts
 {
+    /// <summary>
+    /// Base class for different Tournaments types. Stores and applies rules and plays matches.
+    /// </summary>
     public abstract class Tournament
     {
-        public Tournament (TournamentModel tournamentModel)
-        {
-            TournamentModel = tournamentModel;
-        }
-
-        private Tournament() { }
+        #region Fields
 
         protected TournamentModel TournamentModel;
         protected List<Rule> Rules = new List<Rule>();
         protected List<Reward> MatchRewards = new List<Reward>();
 
-        public abstract void StartTournament(List<PlayerModel> participants);
+        #endregion Fields
+
+        #region Constructor
+
+        public Tournament(TournamentModel tournamentModel)
+        {
+            TournamentModel = tournamentModel;
+        }
+
+        // Forcing to apply model to this class.
+        private Tournament() { }
+
+        #endregion Constructor
+
+
+        #region Builder
 
         public Tournament ApplyRule(Rule rule)
         {
@@ -31,15 +44,23 @@ namespace TennisSimulation.Abstracts
             return this;
         }
 
-        protected virtual PlayerModel PlayMatch(ref PlayerModel player1, ref PlayerModel player2, Random randomGenerator)
+        #endregion Builder
+
+        #region Base Methods
+
+        public abstract void StartTournament(List<PlayerModel> participants);
+
+        protected virtual PlayerModel[] PlayMatch(ref PlayerModel player1, ref PlayerModel player2, Random randomGenerator)
         {
             Console.WriteLine($"Id {player1.Id} is playing against Id {player2.Id} in a {TournamentModel.Type.ToUpperInvariant()} match");
 
+            // Facing off players by the rules.
             for (int i = 0; i < Rules.Count; ++i)
             {
                 Rules[i].Execute(ref player1, ref player2, TournamentModel.Surface);
             }
 
+            // Getting a random value between zero and sum of player scores.
             var randomValue = randomGenerator.Next(0, player1.CurrentMatchScore + player2.CurrentMatchScore);
             var hasPlayer1Won = randomValue < player1.CurrentMatchScore;
 
@@ -51,17 +72,23 @@ namespace TennisSimulation.Abstracts
 
             Console.WriteLine($"        Winner is: {winnerPlayer.Id}");
 
-            player1.PreparePlayer();
-            player2.PreparePlayer();
+            // Resetting relative player data before starting next match.
+            player1.PreparePlayerForNextMatch();
+            player2.PreparePlayerForNextMatch();
 
             Console.WriteLine($"            Id {winnerPlayer.Id} Experience Berfore Win: {winnerPlayer.Experience}");
+
+            // Giving players their rewards
             for (int i = 0; i < MatchRewards.Count; ++i)
             {
                 MatchRewards[i].Execute(ref winnerPlayer, ref loserPlayer);
             }
+
             Console.WriteLine($"            Id {winnerPlayer.Id} Experience After Win: {winnerPlayer.Experience}\n");
 
-            return winnerPlayer;
+            return new PlayerModel[2] { winnerPlayer, loserPlayer };
         }
+
+        #endregion Base Methods
     }
 }
