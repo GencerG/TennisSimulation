@@ -2,6 +2,9 @@
 
 namespace TennisSimulation.Abstracts
 {
+    /// <summary>
+    /// Base class for different rules which will be applied to tournaments.
+    /// </summary>
     public abstract class Rule
     {
         #region Fields
@@ -14,6 +17,7 @@ namespace TennisSimulation.Abstracts
         #region Constructor
 
         private Rule() { }
+
         public Rule(int pointToWin, int pointToLose)
         {
             PointToLose = pointToLose;

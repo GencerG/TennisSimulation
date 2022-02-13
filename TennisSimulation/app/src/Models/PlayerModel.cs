@@ -4,18 +4,21 @@ using TennisSimulation.Utils;
 
 namespace TennisSimulation.Models
 {
+    /// <summary>
+    /// Model class to hold player related data.
+    /// </summary>
     public class PlayerModel
     {
-        [JsonProperty(TennisSimulationUtils.Constants.JSON_PROPERTIES.ID)]
+        [JsonProperty(Constants.JSON_PROPERTIES.ID)]
         public int Id { get; set; }
 
-        [JsonProperty("experience")]
+        [JsonProperty(Constants.JSON_PROPERTIES.EXPERIENCE)]
         public int Experience { get; set; }
 
-        [JsonProperty("hand")]
+        [JsonProperty(Constants.JSON_PROPERTIES.HAND)]
         public string Hand { get; set; }
 
-        [JsonProperty("skills")]
+        [JsonProperty(Constants.JSON_PROPERTIES.SKILLS)]
         public Skills Skills { get; set; }
 
         [JsonIgnore]
@@ -27,18 +30,24 @@ namespace TennisSimulation.Models
         [JsonIgnore]
         public bool HasPlayedMatch { get; set; }
 
-        public void PreparePlayer()
+        /// <summary>
+        /// Resets player's runtime data before starting next match.
+        /// </summary>
+        public void PreparePlayerForNextMatch()
         {
             HasPlayedMatch = false;
             CurrentMatchScore = 0;
         }
 
+        /// <summary>
+        /// Process player's skills. Maps them into a dictionary (<see cref="SkillsDictionary"/>) in order to get skill data.
+        /// </summary>
         public void PostProcess()
         {
             SkillsDictionary = new Dictionary<string, int>();
-            SkillsDictionary.Add("clay", Skills.Clay);
-            SkillsDictionary.Add("grass", Skills.Grass);
-            SkillsDictionary.Add("hard", Skills.Hard);
+            SkillsDictionary.Add(Constants.JSON_PROPERTIES.CLAY, Skills.Clay);
+            SkillsDictionary.Add(Constants.JSON_PROPERTIES.GRASS, Skills.Grass);
+            SkillsDictionary.Add(Constants.JSON_PROPERTIES.HARD, Skills.Hard);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace TennisSimulation.Abstracts
             TournamentModel = tournamentModel;
         }
 
-        // Forcing to apply model to this class.
+        // Forcing to apply model in constructor to this class.
         private Tournament() { }
 
         #endregion Constructor
@@ -50,7 +50,14 @@ namespace TennisSimulation.Abstracts
 
         public abstract void StartTournament(List<PlayerModel> participants);
 
-        protected virtual PlayerModel[] PlayMatch(ref PlayerModel player1, ref PlayerModel player2, Random randomGenerator)
+        /// <summary>
+        /// Faces off two given players by the applied rules of current torunament.
+        /// </summary>
+        /// <param name="player1"></param>
+        /// <param name="player2"></param>
+        /// <param name="randomGenerator"></param>
+        /// <returns>Returns <see cref="PlayerModel"/> array, winner is always at index zero, loser is at one</returns>
+        protected PlayerModel[] PlayMatch(PlayerModel player1, PlayerModel player2, Random randomGenerator)
         {
             Console.WriteLine($"Id {player1.Id} is playing against Id {player2.Id} in a {TournamentModel.Type.ToUpperInvariant()} match");
 

@@ -1,19 +1,23 @@
 ﻿using Newtonsoft.Json;
+using TennisSimulation.Utils;
 
 namespace TennisSimulation.Models
 {
+    /// <summary>
+    /// Model class to hold player's post-tournament data.
+    /// </summary>
     public class PlayerResultModel
     {
-        [JsonProperty("order")]
+        [JsonProperty(Constants.JSON_PROPERTIES.ORDER)]
         public int Order { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty(Constants.JSON_PROPERTIES.ID)]
         public int Id { get; set; }
 
-        [JsonProperty("gained_experience")]
+        [JsonProperty(Constants.JSON_PROPERTIES.GAINED_EXPERIENCE)]
         public int GainedExperience { get; set; }
 
-        [JsonProperty("total_experience")]
+        [JsonProperty(Constants.JSON_PROPERTIES.TOTAL_EXPERIENCE)]
         public int TotalExperience { get; set; }
     }
 }
