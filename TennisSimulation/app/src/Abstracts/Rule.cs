@@ -28,7 +28,7 @@ namespace TennisSimulation.Abstracts
 
         #region Base Methods
 
-        abstract public void Execute(ref PlayerModel player1, ref PlayerModel player2, string groundType);
+        abstract public void Execute(PlayerModel player1, PlayerModel player2, string groundType);
 
         #endregion Base Methods
     }
