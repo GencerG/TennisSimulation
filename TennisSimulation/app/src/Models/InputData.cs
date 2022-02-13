@@ -1,20 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TennisSimulation.Utils;
 
 namespace TennisSimulation.Models
 {
     public class InputData
     {
+        /// <summary>
+        /// Model class to hold all players and tournaments from given input json
+        /// </summary>
         public InputData() { }
         public InputData(string fileName)
         {
             Console.WriteLine("reading input data from file name: " + fileName);
-            var json = TennisSimulationUtils.GetJsonFromFile<InputData>(fileName);
+            var json = TennisSimulationUtils.GetObjectFromJsonFile<InputData>(fileName);
             PlayerModels = json.PlayerModels;
             TournamentModels = json.TournamentModels;
             
@@ -24,9 +24,10 @@ namespace TennisSimulation.Models
             }
         }
 
-        [JsonProperty("players")]
+        [JsonProperty(Constants.JSON_PROPERTIES.PLAYERS)]
         public List<PlayerModel> PlayerModels { get; set; }
-        [JsonProperty("tournaments")]
+
+        [JsonProperty(Constants.JSON_PROPERTIES.TOURNAMENTS)]
         public List<TournamentModel> TournamentModels { get; set; }
     }
 }
