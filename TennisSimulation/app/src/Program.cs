@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TennisSimulation.Core;
 
 namespace TennisSimulation
 {
@@ -10,6 +7,9 @@ namespace TennisSimulation
     {
         static void Main(string[] args)
         {
+            var gm = new GameManager();
+            gm.RunTournaments();
+            Console.ReadLine();
         }
     }
 }
