@@ -19,21 +19,22 @@ namespace TennisSimulation.Core.Tournaments
 
             var randomGenerator = new Random();
 
-            // Matching players first before starting random matches.
+            // Creating all possible match-ups first.
             MatchPlayers(participants);
 
             while (_matchList.Count > 0)
             {
-                // To get random match order, getting a tuple from random index and removing that match from list
+                // To get random match order, getting a tuple from random index and removing that tuple from list
                 var randomMatch = Utils.TennisSimulationUtils.GetRandomAndRemove<PlayerTuple>(_matchList, randomGenerator);
                 var player1 = randomMatch.Player1;
                 var player2 = randomMatch.Player2;
-                PlayMatch(ref player1, ref player2, randomGenerator);
+                PlayMatch(player1, player2, randomGenerator);
             }
         }
 
         /// <summary>
         /// Creates a tuple consisting of two players and stores it in a list.
+        /// This method will store all possible unique match-ups.
         /// </summary>
         /// <param name="participants"></param>
         private void MatchPlayers(List<PlayerModel> participants)
