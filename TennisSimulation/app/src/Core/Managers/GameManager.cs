@@ -31,13 +31,16 @@ namespace TennisSimulation.Core
         #endregion
 
         /// <summary>
-        /// Initialize input data model which contains player and tournament lists.
+        /// Initializes and gets input data model which contains player and tournament lists.
         /// </summary>
         private void GetInputData()
         {
             _inputData = new InputData(Constants.JSON_FILENAME.INPUT_FILE_NAME);
         }
 
+        /// <summary>
+        /// Initializes results model for each player stores them in a list.
+        /// </summary>
         private void InitializePlayerResultModels()
         {
             if (_inputData == null || !_inputData.PlayerModels.Any())
