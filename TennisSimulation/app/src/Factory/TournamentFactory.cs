@@ -4,6 +4,7 @@ using TennisSimulation.Enums;
 using TennisSimulation.Models;
 using TennisSimulation.Rewards;
 using TennisSimulation.Rules;
+using TennisSimulation.Utils;
 
 namespace TennisSimulation.Factory
 {
@@ -18,18 +19,18 @@ namespace TennisSimulation.Factory
             {
                 case TournamentType.Elimination:
                     return new EliminationTournament(model)
-                        .ApplyRule(new ExperienceRule(3, 0))
-                        .ApplyRule(new DominantHandRule(2, 0))
-                        .ApplyRule(new GroundTypeRule(4, 0))
-                        .ApplyRule(new ParticipationRule(1, 0))
+                        .ApplyRule(new ExperienceRule(Constants.RULES.EXPERIENCE.POINT_TO_WIN, Constants.RULES.EXPERIENCE.POINT_TO_LOSE))
+                        .ApplyRule(new DominantHandRule(Constants.RULES.DOMINANT_HAND.POINT_TO_WIN, Constants.RULES.DOMINANT_HAND.POINT_TO_LOSE))
+                        .ApplyRule(new GroundTypeRule(Constants.RULES.GROUND_TYPE.POINT_TO_WIN, Constants.RULES.GROUND_TYPE.POINT_TO_LOSE))
+                        .ApplyRule(new ParticipationRule(Constants.RULES.PARTICIPATION.POINT_TO_WIN, Constants.RULES.PARTICIPATION.POINT_TO_LOSE))
                         .ApplyMatchReward(new ExperienceReward(20, 10));
 
                 case TournamentType.League:
                     return new LeagueTournament(model)
-                        .ApplyRule(new ExperienceRule(3, 0))
-                        .ApplyRule(new DominantHandRule(2, 0))
-                        .ApplyRule(new GroundTypeRule(4, 0))
-                        .ApplyRule(new ParticipationRule(1, 0))
+                        .ApplyRule(new ExperienceRule(Constants.RULES.EXPERIENCE.POINT_TO_WIN, Constants.RULES.EXPERIENCE.POINT_TO_LOSE))
+                        .ApplyRule(new DominantHandRule(Constants.RULES.DOMINANT_HAND.POINT_TO_WIN, Constants.RULES.DOMINANT_HAND.POINT_TO_LOSE))
+                        .ApplyRule(new GroundTypeRule(Constants.RULES.GROUND_TYPE.POINT_TO_WIN, Constants.RULES.GROUND_TYPE.POINT_TO_LOSE))
+                        .ApplyRule(new ParticipationRule(Constants.RULES.PARTICIPATION.POINT_TO_WIN, Constants.RULES.PARTICIPATION.POINT_TO_LOSE))
                         .ApplyMatchReward(new ExperienceReward(10, 1));
 
                 default:
