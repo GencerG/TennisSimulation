@@ -3,13 +3,16 @@ using TennisSimulation.Models;
 
 namespace TennisSimulation.Rules
 {
+    /// <summary>
+    /// The one with the highest ground type skill wins.
+    /// </summary>
     public class GroundTypeRule : Rule
     {
         public GroundTypeRule(int pointToWin, int pointToLose) : base(pointToWin, pointToLose)
         {
         }
 
-        public override void Execute(ref PlayerModel player1, ref PlayerModel player2, string groundType)
+        public override void Execute(PlayerModel player1, PlayerModel player2, string groundType)
         {
             if (player1.SkillsDictionary[groundType] > player2.SkillsDictionary[groundType])
             {

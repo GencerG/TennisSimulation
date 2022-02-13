@@ -29,7 +29,7 @@ namespace TennisSimulation.Abstracts
 
         #region Base Methods
 
-        public abstract void Execute(ref PlayerModel winnerPlayer, ref PlayerModel LoserPlayer);
+        public abstract void Apply(PlayerModel winnerPlayer, PlayerModel LoserPlayer);
 
         #endregion Base Methods
 
