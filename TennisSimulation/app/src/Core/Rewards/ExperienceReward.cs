@@ -9,7 +9,7 @@ namespace TennisSimulation.Rewards
         {
         }
 
-        public override void Execute(ref PlayerModel winnerPlayer, ref PlayerModel LoserPlayer)
+        public override void Apply(PlayerModel winnerPlayer, PlayerModel LoserPlayer)
         {
             winnerPlayer.Experience += WinnerPrize;
             LoserPlayer.Experience += LoserPrize;
