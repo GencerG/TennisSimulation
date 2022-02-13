@@ -5,6 +5,9 @@ using TennisSimulation.Utils;
 
 namespace TennisSimulation.Models
 {
+    /// <summary>
+    /// Helps to read input data from json file and stores them.
+    /// </summary>
     public class InputData
     {
         /// <summary>
@@ -13,7 +16,7 @@ namespace TennisSimulation.Models
         public InputData() { }
         public InputData(string fileName)
         {
-            Console.WriteLine("reading input data from file name: " + fileName);
+            Console.WriteLine($"reading input data from file name: {fileName}");
             var json = TennisSimulationUtils.GetObjectFromJsonFile<InputData>(fileName);
             PlayerModels = json.PlayerModels;
             TournamentModels = json.TournamentModels;
