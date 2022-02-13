@@ -21,6 +21,9 @@ namespace TennisSimulation.Abstracts
 
         public Tournament(TournamentModel tournamentModel)
         {
+            if (tournamentModel == null)
+                throw new ArgumentNullException($"Given Tournament model is null");
+
             TournamentModel = tournamentModel;
         }
 
@@ -32,13 +35,13 @@ namespace TennisSimulation.Abstracts
 
         #region Builder
 
-        public Tournament ApplyRule(Rule rule)
+        public Tournament SetRule(Rule rule)
         {
             Rules.Add(rule);
             return this;
         }
 
-        public Tournament ApplyMatchReward(Reward reward)
+        public Tournament SetMatchReward(Reward reward)
         {
             MatchRewards.Add(reward);
             return this;
@@ -59,39 +62,28 @@ namespace TennisSimulation.Abstracts
         /// <returns>Returns <see cref="PlayerModel"/> array, winner is always at index zero, loser is at one</returns>
         protected PlayerModel[] PlayMatch(PlayerModel player1, PlayerModel player2, Random randomGenerator)
         {
-            Console.WriteLine($"Id {player1.Id} is playing against Id {player2.Id} in a {TournamentModel.Type.ToUpperInvariant()} match");
-
             // Facing off players by the rules.
             for (int i = 0; i < Rules.Count; ++i)
             {
-                Rules[i].Execute(ref player1, ref player2, TournamentModel.Surface);
+                Rules[i].Execute(player1, player2, TournamentModel.Surface);
             }
 
             // Getting a random value between zero and sum of player scores.
             var randomValue = randomGenerator.Next(0, player1.CurrentMatchScore + player2.CurrentMatchScore);
             var hasPlayer1Won = randomValue < player1.CurrentMatchScore;
 
-            Console.WriteLine($"    Id {player1.Id} match score: {player1.CurrentMatchScore}\n    Id {player2.Id} match score: {player2.CurrentMatchScore}");
-            Console.WriteLine($"        Random result: {randomValue}");
-
             var winnerPlayer = hasPlayer1Won ? player1 : player2;
             var loserPlayer = hasPlayer1Won ? player2 : player1;
-
-            Console.WriteLine($"        Winner is: {winnerPlayer.Id}");
 
             // Resetting relative player data before starting next match.
             player1.PreparePlayerForNextMatch();
             player2.PreparePlayerForNextMatch();
 
-            Console.WriteLine($"            Id {winnerPlayer.Id} Experience Berfore Win: {winnerPlayer.Experience}");
-
             // Giving players their rewards
             for (int i = 0; i < MatchRewards.Count; ++i)
             {
-                MatchRewards[i].Execute(ref winnerPlayer, ref loserPlayer);
+                MatchRewards[i].Apply(winnerPlayer, loserPlayer);
             }
-
-            Console.WriteLine($"            Id {winnerPlayer.Id} Experience After Win: {winnerPlayer.Experience}\n");
 
             return new PlayerModel[2] { winnerPlayer, loserPlayer };
         }
