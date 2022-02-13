@@ -5,6 +5,9 @@ using TennisSimulation.Models;
 
 namespace TennisSimulation.Core.Tournaments
 {
+    /// <summary>
+    /// Everyone matches each other once and matches are played in random order
+    /// </summary>
     public class LeagueTournament : Tournament
     {
         private List<PlayerTuple> _matchList;
@@ -15,8 +18,6 @@ namespace TennisSimulation.Core.Tournaments
 
         public override void StartTournament(List<PlayerModel> participants)
         {
-            Console.WriteLine($"----------Starting new {TournamentModel.Type.ToUpperInvariant()} with {TournamentModel.Surface.ToUpperInvariant()} surface----------\n");
-
             var randomGenerator = new Random();
 
             // Creating all possible match-ups first.

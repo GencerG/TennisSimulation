@@ -5,6 +5,9 @@ using TennisSimulation.Models;
 
 namespace TennisSimulation.Core.Tournaments
 {
+    /// <summary>
+    /// Loser gets eliminated directly. The last player standing wins the tournament.
+    /// </summary>
     public class EliminationTournament : Tournament
     {
         public EliminationTournament(TournamentModel tournamentModel) : base(tournamentModel)
@@ -13,8 +16,6 @@ namespace TennisSimulation.Core.Tournaments
 
         public override void StartTournament(List<PlayerModel> participants)
         {
-            Console.WriteLine($"----------Starting new {TournamentModel.Type.ToUpperInvariant()} with {TournamentModel.Surface.ToUpperInvariant()} surface----------\n");
-
             var upperBracket = new List<PlayerModel>();
             var randomGenerator = new Random();
             var availablePlayersForNextTournament = new List<PlayerModel>();
@@ -34,8 +35,6 @@ namespace TennisSimulation.Core.Tournaments
             // Removing losing player from upper bracket list until we will have only one player.
             while (upperBracket.Count > 1)
             {
-                Console.WriteLine($"Starting Round with {upperBracket.Count }");
-
                 var matchAmount = upperBracket.Count / 2;
                 for (int i = 0; i < matchAmount; ++i)
                 {
@@ -54,7 +53,6 @@ namespace TennisSimulation.Core.Tournaments
             {
                 participants.Add(availablePlayersForNextTournament[i]);
             }
-            Console.WriteLine("Winner Id is: " + upperBracket[0].Id);
         }
     }
 }
