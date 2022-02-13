@@ -67,7 +67,7 @@ namespace TennisSimulation.Core
         /// </summary>
         public void RunTournaments()
         {
-            Console.WriteLine("Starting all given tournaments in input file");
+            Console.WriteLine("-> Starting all given tournaments in input file");
 
             for (int i = 0; i < _inputData.TournamentModels.Count; ++i)
             {
@@ -78,7 +78,7 @@ namespace TennisSimulation.Core
                     currentTournament.StartTournament(_inputData.PlayerModels);
                 }
             }
-            Console.WriteLine("All tournaments are concluded. Waiting for results...");
+            Console.WriteLine("-> All tournaments are concluded. Waiting for results...");
             CalculateResults();
         }
 
@@ -103,7 +103,7 @@ namespace TennisSimulation.Core
             }
 
             TennisSimulationUtils.SerializeObjectToJsonFile<List<PlayerResultModel>>(Constants.JSON_FILENAME.OUPUT_FILE_NAME, _results);
-            Console.WriteLine($"Output result file created under Resources file with file name: {Constants.JSON_FILENAME.OUPUT_FILE_NAME}");
+            Console.WriteLine($"-> Output result file is created in app/src/Resources file with file name: {Constants.JSON_FILENAME.OUPUT_FILE_NAME}");
         }
 
         /// <summary>
