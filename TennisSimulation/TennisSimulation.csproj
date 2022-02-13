@@ -53,8 +53,10 @@
     <Compile Include="app\src\Core\Rules\ExperienceRule.cs" />
     <Compile Include="app\src\Core\Rules\GroundTypeRule.cs" />
     <Compile Include="app\src\Core\Rules\ParticipationRule.cs" />
+    <Compile Include="app\src\Core\Rules\_RuleConfigs.cs" />
     <Compile Include="app\src\Core\Tournaments\EliminationTournament.cs" />
     <Compile Include="app\src\Core\Tournaments\LeagueTournament.cs" />
+    <Compile Include="app\src\Core\Tournaments\_TournamentConfigs.cs" />
     <Compile Include="app\src\Enums\Enums.cs" />
     <Compile Include="app\src\Abstracts\Rule.cs" />
     <Compile Include="app\src\Abstracts\Tournament.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="app\src\Models\Skills.cs" />
     <Compile Include="app\src\Models\TournamentModel.cs" />
     <Compile Include="app\src\Program.cs" />
+    <Compile Include="app\src\Utils\Constants.cs" />
     <Compile Include="app\src\Utils\TennisSimulationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\src\Resources\" />
+    <Folder Include="app\tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
