@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,11 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\src\Abstracts\Reward.cs" />
+    <Compile Include="app\src\Core\Managers\GameManager.cs" />
+    <Compile Include="app\src\Core\Rewards\ExperienceReward.cs" />
+    <Compile Include="app\src\Core\Rules\DominantHandRule.cs" />
+    <Compile Include="app\src\Core\Rules\ExperienceRule.cs" />
+    <Compile Include="app\src\Core\Rules\GroundTypeRule.cs" />
+    <Compile Include="app\src\Core\Rules\ParticipationRule.cs" />
+    <Compile Include="app\src\Core\Rules\_RuleConfigs.cs" />
+    <Compile Include="app\src\Core\Tournaments\EliminationTournament.cs" />
+    <Compile Include="app\src\Core\Tournaments\LeagueTournament.cs" />
+    <Compile Include="app\src\Core\Tournaments\_TournamentConfigs.cs" />
+    <Compile Include="app\src\Enums\Enums.cs" />
+    <Compile Include="app\src\Abstracts\Rule.cs" />
+    <Compile Include="app\src\Abstracts\Tournament.cs" />
+    <Compile Include="app\src\Factory\TournamentFactory.cs" />
+    <Compile Include="app\src\Models\InputData.cs" />
+    <Compile Include="app\src\Models\PlayerModel.cs" />
+    <Compile Include="app\src\Models\PlayerResultModel.cs" />
+    <Compile Include="app\src\Models\Skills.cs" />
+    <Compile Include="app\src\Models\TournamentModel.cs" />
     <Compile Include="app\src\Program.cs" />
+    <Compile Include="app\src\Utils\Constants.cs" />
+    <Compile Include="app\src\Utils\TennisSimulationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\src\Resources\" />
+    <Folder Include="app\tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
